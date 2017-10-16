@@ -1,0 +1,25 @@
+{
+    "name": "microservice",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node ./index",
+        "dev": "nodemon ./index",
+        "eslint": "node ./node_modules/eslint/bin/eslint.js ./src",
+        "dev-win": "SET NODE_ENV=development && nodemon ./bin/www",
+        "dev-mac": "NODE_ENV=development nodemon ./bin/www"
+    },
+    "dependencies": {
+        "body-parser": "1.17.1",
+        "cookie-parser": "1.4.3",
+        "debug": "2.6.3",
+        "express": "4.15.2",
+        "morgan": "1.8.1",
+        "serve-favicon": "2.4.2"
+    },
+    "devDependencies": {
+        "dotenv": "4.0.0",
+        "eslint": "^4.9.0",
+        "nodemon": "^1.12.1"
+    }
+}
