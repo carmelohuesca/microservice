@@ -7,25 +7,28 @@ const FS = require('fs');
 const CONFIG = require('./config');
 const CORS = require('./CORS');
 const ROUTER = require('../routes');
-
-const app = EXPRESS();
+const APP = EXPRESS();
 
 // CORS headers
-app.use(CORS.INIT);
+APP.use(CORS.INIT);
 
-app.use(BODY_PARSER.json());
-app.use(BODY_PARSER.urlencoded({ extended: true }));
+// PARSER
+APP.use(BODY_PARSER.json());
+APP.use(BODY_PARSER.urlencoded({ extended: true }));
 
+// ENVIRONMENT
 if (CONFIG.NODE_ENV !== 'production') {
-    app.use(MORGAN('common', {
+    APP.use(MORGAN('common', {
         stream: FS.createWriteStream('./LOGS.log', { flags: 'a' })
     }));
-    app.use(MORGAN('dev'));
+    APP.use(MORGAN('dev'));
 }
 
-app.use(ROUTER);
+// ROUTER
+APP.use(ROUTER);
 
-app.listen(CONFIG.PORT, () => {
+// LISTENER
+APP.listen(CONFIG.PORT, () => {
     console.log('================================================================');
     console.log('ENVIRONMENT INFO');
     console.log('================================================================');
@@ -34,4 +37,4 @@ app.listen(CONFIG.PORT, () => {
     console.log('================================================================');
 });
 
-module.exports = app;
+module.exports = APP;

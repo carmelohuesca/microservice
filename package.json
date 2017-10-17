@@ -1,13 +1,13 @@
 {
     "name": "microservice",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "private": true,
     "scripts": {
-        "start": "node ./index",
-        "dev": "nodemon ./index",
+        "start": "node ./src",
+        "dev": "nodemon ./src",
         "eslint": "node ./node_modules/eslint/bin/eslint.js ./src",
-        "dev-win": "SET NODE_ENV=development && nodemon ./bin/www",
-        "dev-mac": "NODE_ENV=development nodemon ./bin/www"
+        "dev-win": "SET NODE_ENV=development && nodemon ./src",
+        "dev-mac": "NODE_ENV=development nodemon ./src"
     },
     "dependencies": {
         "body-parser": "1.17.1",
