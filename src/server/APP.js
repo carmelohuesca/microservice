@@ -7,37 +7,48 @@ const FS = require('fs');
 const CONFIG = require('./config');
 const CORS = require('./CORS');
 const ROUTER = require('../routes');
-const APP = express();
+const app = express();
 
-// CORS headers
-APP.use(CORS.INIT);
+const init = () => {
 
-// PARSER
-APP.use(BODY_PARSER.json());
-APP.use(BODY_PARSER.urlencoded({ extended: true }));
+    // CORS headers
+    app.use(CORS.INIT);
 
-// ENVIRONMENT
-if (CONFIG.NODE_ENV !== 'production') {
-    APP.use(MORGAN('common', {
-        stream: FS.createWriteStream('./LOGS.log', { flags: 'a' })
-    }));
-    APP.use(MORGAN('dev'));
-}
+    // PARSER
+    app.use(BODY_PARSER.json());
+    app.use(BODY_PARSER.urlencoded({ extended: true }));
 
-// STATIC SERVER
-APP.use(express.static('public'));
+    // ENVIRONMENT
+    if (CONFIG.NODE_ENV !== 'production') {
+        app.use(MORGAN('common', {
+            stream: FS.createWriteStream('./LOGS.log', { flags: 'a' })
+        }));
+        app.use(MORGAN('dev'));
+    }
 
-// ROUTER
-APP.use(ROUTER);
+    // STATIC SERVER
+    app.use(express.static('public'));
 
-// LISTENER
-APP.listen(CONFIG.PORT, () => {
-    console.log('================================================================');
-    console.log('ENVIRONMENT INFO');
-    console.log('================================================================');
-    console.log('NODE_ENV: ' + CONFIG.NODE_ENV);
-    console.log('PORT: ' + CONFIG.PORT);
-    console.log('================================================================');
-});
+    // ROUTER
+    app.use(ROUTER);
 
-module.exports = APP;
+    // LISTENER
+    app.listen(CONFIG.PORT, () => {
+        console.log('================================================================');
+        console.log('ENVIRONMENT INFO');
+        console.log('================================================================');
+        console.log('NODE_ENV: ' + CONFIG.NODE_ENV);
+        console.log('PORT: ' + CONFIG.PORT);
+        console.log('================================================================');
+    });
+    return app;
+};
+
+const closeServer = () => {
+    app.close();
+};
+
+module.exports = {
+    init,
+    closeServer
+};
