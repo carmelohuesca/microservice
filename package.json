@@ -1,25 +1,27 @@
 {
-    "name": "microservice",
-    "version": "0.0.1",
-    "private": true,
-    "scripts": {
-        "start": "node ./src",
-        "dev": "nodemon ./src",
-        "eslint": "node ./node_modules/eslint/bin/eslint.js ./src",
-        "dev-win": "SET NODE_ENV=development && nodemon ./src",
-        "dev-mac": "NODE_ENV=development nodemon ./src"
-    },
-    "dependencies": {
-        "body-parser": "1.17.1",
-        "cookie-parser": "1.4.3",
-        "debug": "2.6.3",
-        "express": "4.15.2",
-        "morgan": "1.8.1",
-        "serve-favicon": "2.4.2"
-    },
-    "devDependencies": {
-        "dotenv": "4.0.0",
-        "eslint": "^4.9.0",
-        "nodemon": "^1.12.1"
-    }
+  "name": "microservice",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./src",
+    "dev": "nodemon ./src",
+    "eslint": "node ./node_modules/eslint/bin/eslint.js ./src",
+    "dev-win": "SET NODE_ENV=development && nodemon ./src",
+    "dev-mac": "NODE_ENV=development nodemon ./src"
+  },
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "cookie-parser": "1.4.3",
+    "debug": "2.6.3",
+    "express": "4.15.2",
+    "mongodb": "^2.2.33",
+    "morgan": "1.8.1",
+    "pg-promise": "^7.0.2",
+    "serve-favicon": "2.4.2"
+  },
+  "devDependencies": {
+    "dotenv": "4.0.0",
+    "eslint": "^4.9.0",
+    "nodemon": "^1.12.1"
+  }
 }

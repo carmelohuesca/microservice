@@ -1,13 +1,13 @@
 require('dotenv').config();
 const BODY_PARSER = require('body-parser');
-const EXPRESS = require('express');
+const express = require('express');
 const PATH = require('path');
 const MORGAN = require('morgan');
 const FS = require('fs');
 const CONFIG = require('./config');
 const CORS = require('./CORS');
 const ROUTER = require('../routes');
-const APP = EXPRESS();
+const APP = express();
 
 // CORS headers
 APP.use(CORS.INIT);
@@ -23,6 +23,9 @@ if (CONFIG.NODE_ENV !== 'production') {
     }));
     APP.use(MORGAN('dev'));
 }
+
+// STATIC SERVER
+APP.use(express.static('public'));
 
 // ROUTER
 APP.use(ROUTER);
