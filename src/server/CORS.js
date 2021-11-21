@@ -1,5 +1,5 @@
-class CORS {
-    static INIT(req, res, next) {
+class Cors {
+    init(req, res, next) {
         res.header('Access-Control-Allow-Origin', req.headers.origin);
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS,PATCH');
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Authorization');
@@ -7,4 +7,4 @@ class CORS {
         next();
     }
 }
-module.exports = CORS;
+module.exports = new Cors();

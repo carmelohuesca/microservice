@@ -3,7 +3,11 @@ class UsersController {
     static get mock() {
         const detail = { id: 1, name: 'carmelo' };
         return {
-            list: [detail, { id: 2, name: 'daniel' }, { id: 3, name: 'raquel' }],
+            list: [detail,
+                { id: 2, name: 'raquel' },
+                { id: 3, name: 'daniel' },
+                { id: 4, name: 'india' },
+            ],
             read: detail
         };
     }
